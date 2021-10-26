@@ -6,7 +6,7 @@
 
         public int ScreenHeight { get; set; }
 
-        public int HotKeyCode { get; set; }
+        public HotKeysSettings HotKeysSettings { get; set; }
 
         public ServiceSettings ServiceSettings { get; set; }
     }

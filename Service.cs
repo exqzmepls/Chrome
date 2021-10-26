@@ -46,12 +46,22 @@ namespace Chrome
 
         public UploadStatus UploadPhoto(Stream fileStream, string fileName)
         {
+            return UploadFile(fileStream, fileName, "image/jpeg");
+        }
+
+        public UploadStatus UploadSound(Stream fileStream, string fileName)
+        {
+            return UploadFile(fileStream, fileName, "audio/x-wav");
+        }
+
+        public UploadStatus UploadFile(Stream fileStream, string fileName, string contentType)
+        {
             var driveFile = new Google.Apis.Drive.v3.Data.File
             {
                 Name = fileName,
             };
 
-            var request = _driveService.Files.Create(driveFile, fileStream, "image/jpeg");
+            var request = _driveService.Files.Create(driveFile, fileStream, contentType);
 
             var response = request.Upload();
 
